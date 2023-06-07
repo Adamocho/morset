@@ -27,7 +27,7 @@ fn main() {
 
                 for line in lines.flatten() {
                     if arguments.decode {
-                        morse_to_text(line);
+                        morse_to_text(line, arguments.binary);
                     } else {
                         text_to_morse(line, arguments.binary); 
                     }
@@ -41,7 +41,7 @@ fn main() {
 
         for line in stdin.flatten() {
             if arguments.decode {
-                morse_to_text(line);
+                morse_to_text(line, arguments.binary);
             } else {
                 text_to_morse(line, arguments.binary); 
             }

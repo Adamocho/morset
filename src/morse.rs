@@ -11,7 +11,7 @@ pub const LETTER_GAP_BIN: &str = "00";
 pub const WORD_GAP_BIN: &str = "000000";
 
 
-pub static MORSE_CODE_SIGNS: [(char, &str); 52]= [
+pub static MORSE_CODE_SIGNS: [(char, &str); 53]= [
     ('a', ".-"),
     ('b', "-..."),
     ('c', "-.-."),
@@ -64,6 +64,7 @@ pub static MORSE_CODE_SIGNS: [(char, &str); 52]= [
     ('?', "..--.."),
     ('/', "-..-."),
     (' ', "/"),
+    (' ', " "),
 ];
 
 pub fn display_alphabet(binary: bool) {
@@ -89,8 +90,27 @@ pub fn display_alphabet(binary: bool) {
     }
 }
 
-pub fn morse_to_text(_message: String) {
-    todo!();
+pub fn morse_to_text(message: String, binary: bool) {
+        let words: Vec<String> = 
+            if binary { message.split("0000000").map(String::from).collect() }
+            else { message.split('/').map(String::from).collect() };
+
+        for word in words {
+            let letters: Vec<&str> = 
+                if binary { word.split("000").collect() }
+                else { word.split(' ').collect() };
+
+            for letter in letters {
+                let letter_from_bin = bin_to_morse(letter.to_owned());
+                for (character, code) in MORSE_CODE_SIGNS {
+                    if letter == code || letter_from_bin == code {
+                        print!("{}", character.to_uppercase());
+                    }
+                }     
+            }
+            print!(" ");
+        }
+        println!();
 }
 
 pub fn text_to_morse(message: String, binary: bool) {
@@ -115,4 +135,24 @@ pub fn text_to_morse(message: String, binary: bool) {
         }
     }
     println!();
+}
+
+fn bin_to_morse(bin_letter: String) -> String {
+    let mut morse_letter = String::new();
+    let mut ones_counter = 0;
+
+    for (index, bit) in bin_letter.chars().enumerate() {
+        if bit == '1' {
+            ones_counter += 1;
+        } 
+        if bit == '0' || index == bin_letter.len() - 1 {
+            match ones_counter {
+                1 => morse_letter += ".",
+                3 => morse_letter += "-",
+                _ => ()
+            }
+            ones_counter = 0;
+        }
+    }
+    morse_letter
 }
