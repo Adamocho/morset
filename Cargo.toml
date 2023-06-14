@@ -2,8 +2,10 @@
 name = "morset"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "MORSE code Translator / cheat sheet"
+license = "MIT"
+keywords = ["morse_code", "morse", "translator"]
+categories = ["encoding", "text-processing"]
 
 [dependencies]
 clap = { version = "4.3.2", features = ["derive"] }
