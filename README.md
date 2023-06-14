@@ -1,4 +1,4 @@
-# Morset
+![# Morset](logo.svg)
 
 Morse Code Translator
 
