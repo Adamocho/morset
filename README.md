@@ -2,6 +2,18 @@
 
 Morse Code Translator
 
+## Table of Content
+- [Quick Introduction](#quick-introduction)
+- [Installing](#installing)
+- [Usage](#usage)
+    - [Examples](#examples)
+        - [Launch into live-translating mode (line after line).](#launch-into-live-translating-mode-(line-after-line).)
+        - [Pipe as input](#pipe-as-input)
+        - [File(s) as input](#file(s)-as-input)
+        - [Print the alphabet in morse code](#print-the-alphabet-in-morse-code)
+    - [Flags](#flags)
+- [Uninstalling](#uninstalling)
+
 ## Quick Introduction
 
 I learned Morse Code in a day and I thought it would be nice to have a tool to translate it in both ways - even if only for flexing purposes...
@@ -127,4 +139,4 @@ Show help menu.
 
 Just delete the directory altogether.
 
-Simple. Fast. Reliable.
+A simple, fast and reliable method.
